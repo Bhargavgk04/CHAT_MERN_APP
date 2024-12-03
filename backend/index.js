@@ -17,7 +17,7 @@ app.use(express.json());
 app.use(cookieParser());
 
 // Configure CORS to allow both origins
-const allowedOrigins = ['http://localhost:3000', 'http://localhost:5173'];
+const allowedOrigins = ['https://chat-mern-app-x4j1.onrender.com', 'http://localhost:3000', 'http://localhost:5173'];
 
 app.use(
     cors({
