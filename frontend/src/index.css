@@ -2,7 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 body {
-  background: #808080;
+  background: url("../public/bg.jpg");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
