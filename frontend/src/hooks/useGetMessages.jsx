@@ -9,16 +9,16 @@ const useGetMessages = () => {
     const dispatch = useDispatch();
     useEffect(() => {
         const fetchMessages = async () => {
+            if (!selectedUser) return;
             try {
-                axios.defaults.withCredentials = true;
-                const res = await axios.get(`${BASE_URL}/api/v1/message/${selectedUser?._id}`);
+                const res = await axios.get(`${BASE_URL}/api/v1/message/${selectedUser._id}`, { withCredentials: true });
                 dispatch(setMessages(res.data))
             } catch (error) {
                 console.log(error);
             }
         }
         fetchMessages();
-    }, [selectedUser?._id,setMessages]);
+    }, [selectedUser, dispatch]);
 }
 
 export default useGetMessages

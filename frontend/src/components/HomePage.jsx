@@ -18,7 +18,7 @@ const HomePage = () => {
     };
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
-  }, []);
+  }, [authUser, navigate]);
 
   if (isMobile) {
     // On mobile: show Sidebar if no user selected, else show MessageContainer
