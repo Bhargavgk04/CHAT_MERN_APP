@@ -96,30 +96,30 @@ const Profile = () => {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-[60vh] px-2 sm:px-8">
-      <div className="bg-white dark:bg-zinc-800 p-16 rounded-2xl shadow-lg w-full max-w-3xl flex flex-col items-center relative">
+    <div className="flex flex-col items-center justify-center min-h-[60vh]">
+      <div className="bg-white dark:bg-zinc-800 p-12 rounded-lg shadow-md w-full max-w-2xl flex flex-col items-center relative">
         {/* Back Button */}
         <button
-          className="absolute top-6 left-6 flex items-center gap-2 text-2xl text-gray-600 dark:text-gray-300 hover:text-blue-600 z-10"
+          className="absolute top-4 left-4 flex items-center gap-2 text-lg text-gray-600 dark:text-gray-300 hover:text-blue-600"
           onClick={() => navigate(-1)}
         >
           <IoArrowBack />
-          <span className="hidden sm:inline text-xl">Back</span>
+          <span className="hidden sm:inline">Back</span>
         </button>
         <img
           src={authUser?.profilePhoto || 'https://github.com/shadcn.png'}
           alt="Profile"
-          className="w-40 h-40 rounded-full object-cover mb-8 border-4 border-zinc-400 shadow-md"
+          className="w-28 h-28 rounded-full object-cover mb-6 border-2 border-zinc-400"
         />
-        <h2 className="text-4xl font-extrabold mb-4 tracking-wide">{authUser?.username}</h2>
-        <p className="mb-3 text-zinc-600 dark:text-zinc-300 text-2xl">
+        <h2 className="text-3xl font-bold mb-3">{authUser?.username}</h2>
+        <p className="mb-2 text-zinc-600 dark:text-zinc-300 text-lg">
           <span className="font-semibold">Full Name:</span> {authUser?.fullName}
         </p>
-        <p className="mb-3 text-zinc-600 dark:text-zinc-300 text-2xl">
+        <p className="mb-2 text-zinc-600 dark:text-zinc-300 text-lg">
           <span className="font-semibold">Gender:</span> {authUser?.gender || 'Not set'}
         </p>
         <button
-          className="btn btn-primary mt-8 px-12 py-3 text-2xl rounded-lg shadow"
+          className="btn btn-primary mt-6 px-8 py-2 text-lg"
           onClick={handleEdit}
         >
           Edit
@@ -128,45 +128,45 @@ const Profile = () => {
       {/* Edit Modal */}
       {isEditing && (
         <div className="fixed inset-0 bg-black bg-opacity-40 flex items-center justify-center z-50">
-          <div className="bg-white dark:bg-zinc-800 p-10 rounded-2xl shadow-2xl w-full max-w-lg relative">
+          <div className="bg-white dark:bg-zinc-800 p-8 rounded-lg shadow-lg w-4/5 max-w-md relative">
             <button
-              className="absolute top-4 right-4 text-2xl font-bold"
+              className="absolute top-2 right-2 text-xl font-bold"
               onClick={handleClose}
             >
               &times;
             </button>
-            <h3 className="text-2xl font-semibold mb-6">Edit Profile</h3>
-            <form onSubmit={handleSubmit} className="flex flex-col gap-6">
+            <h3 className="text-xl font-semibold mb-4">Edit Profile</h3>
+            <form onSubmit={handleSubmit} className="flex flex-col gap-4">
               <div>
-                <label className="block mb-2 font-medium text-lg">Full Name</label>
+                <label className="block mb-1 font-medium">Full Name</label>
                 <input
                   type="text"
                   name="fullName"
                   value={form.fullName}
                   onChange={handleChange}
-                  className="input input-bordered w-full text-lg px-4 py-2"
+                  className="input input-bordered w-full"
                   required
                 />
               </div>
               <div>
-                <label className="block mb-2 font-medium text-lg">Username</label>
+                <label className="block mb-1 font-medium">Username</label>
                 <input
                   type="text"
                   name="username"
                   value={form.username}
                   onChange={handleChange}
-                  className="input input-bordered w-full text-lg px-4 py-2"
+                  className="input input-bordered w-full"
                   required
                 />
               </div>
               <div>
-                <label className="block mb-2 font-medium text-lg">Profile Photo</label>
+                <label className="block mb-1 font-medium">Profile Photo</label>
                 <input
                   type="file"
                   name="profilePhoto"
                   accept="image/*"
                   onChange={handleFileChange}
-                  className="file-input file-input-bordered w-full text-lg"
+                  className="file-input file-input-bordered w-full"
                   disabled={uploading}
                 />
                 {uploading && <div className="text-xs text-blue-500">Uploading...</div>}
@@ -174,28 +174,28 @@ const Profile = () => {
                   <img
                     src={form.profilePhoto}
                     alt="Preview"
-                    className="w-24 h-24 rounded-full mt-4 object-cover border-2 shadow"
+                    className="w-16 h-16 rounded-full mt-2 object-cover border"
                   />
                 )}
               </div>
               <div>
-                <label className="block mb-2 font-medium text-lg">Gender</label>
+                <label className="block mb-1 font-medium">Gender</label>
                 <select
                   name="gender"
                   value={form.gender}
                   onChange={handleChange}
-                  className="input input-bordered w-full text-lg px-4 py-2"
+                  className="input input-bordered w-full"
                   required
                 >
                   <option value="male">Male</option>
                   <option value="female">Female</option>
                 </select>
               </div>
-              {error && <div className="text-red-500 text-base">{error}</div>}
-              {success && <div className="text-green-600 text-base">{success}</div>}
+              {error && <div className="text-red-500 text-sm">{error}</div>}
+              {success && <div className="text-green-600 text-sm">{success}</div>}
               <button
                 type="submit"
-                className="btn btn-primary mt-4 px-8 py-2 text-xl rounded"
+                className="btn btn-primary mt-2"
                 disabled={loading || uploading}
               >
                 {loading ? 'Saving...' : 'Save Changes'}
