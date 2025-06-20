@@ -9,6 +9,7 @@ import io from "socket.io-client";
 import { setSocket } from './redux/socketSlice';
 import { setOnlineUsers } from './redux/userSlice';
 import { BASE_URL } from '.';
+import Profile from './components/Profile';
 
 const router = createBrowserRouter([
   {
@@ -23,7 +24,10 @@ const router = createBrowserRouter([
     path:"/login",
     element:<Login/>
   },
-
+  {
+    path: "/profile",
+    element: <Profile />
+  },
 ])
 
 function App() { 
