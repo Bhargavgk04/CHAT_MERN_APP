@@ -19,7 +19,14 @@ const Message = ({message}) => {
             <div className="chat-header">
                 <time className="text-xs opacity-50 text-white">12:45</time>
             </div>
-            <div className={`chat-bubble ${message?.senderId !== authUser?._id ? 'bg-gray-200 text-black' : ''} `}>{message?.message}</div>
+            {message?.image && (
+                <div className="chat-bubble p-0 bg-transparent shadow-none">
+                    <img src={message.image} alt="chat-img" className="max-w-xs max-h-60 rounded-lg" />
+                </div>
+            )}
+            {message?.message && (
+                <div className={`chat-bubble ${message?.senderId !== authUser?._id ? 'bg-gray-200 text-black' : ''} `}>{message?.message}</div>
+            )}
         </div>
     )
 }
