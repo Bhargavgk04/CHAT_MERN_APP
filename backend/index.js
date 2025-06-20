@@ -37,11 +37,6 @@ app.use(
 app.use("/api/v1/user", userRoute);
 app.use("/api/v1/message", messageRoute);
 
-app.use(express.static(path.join(__dirname, "/frontend/build")));
-app.get('*', (_,res) => {
-    res.sendFile(path.join(__dirname, "frontend", "build", "index.html"));
-});
-
 // Start server
 server.listen(PORT, () => {
     connectDB();
