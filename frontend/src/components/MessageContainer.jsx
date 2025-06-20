@@ -1,3 +1,4 @@
+import React, { useEffect } from 'react'
 import SendInput from './SendInput'
 import Messages from './Messages';
 import { useSelector,useDispatch } from "react-redux";
@@ -20,8 +21,8 @@ const MessageContainer = () => {
             {
                 selectedUser !== null ? (
                     <div className='flex flex-col h-full w-full flex-1'>
-                        <div className='flex gap-2 items-center bg-zinc-800 text-white px-4 py-2 mb-2'>
-                            {/* Back button for mobile */}
+                        {/* Sticky header for mobile */}
+                        <div className={`flex gap-2 items-center bg-zinc-800 text-white px-4 py-2 mb-2 ${isMobile ? 'sticky top-0 z-10' : ''}`}>
                             {isMobile && (
                                 <button onClick={handleBack} className="mr-2 text-2xl p-1 rounded-full hover:bg-zinc-700 focus:outline-none">
                                     <IoArrowBack />
@@ -38,10 +39,12 @@ const MessageContainer = () => {
                                 </div>
                             </div>
                         </div>
+                        {/* Scrollable messages area */}
                         <div className='flex-1 flex flex-col overflow-y-auto'>
                             <Messages />
                         </div>
-                        <div className='pt-2'>
+                        {/* Sticky input for mobile */}
+                        <div className={`${isMobile ? 'sticky bottom-0 z-10 bg-white' : 'pt-2'}`}>
                             <SendInput />
                         </div>
                     </div>
