@@ -1,4 +1,4 @@
-import React, {useState, useRef} from 'react'
+import {useState, useRef} from 'react'
 import { IoSend } from "react-icons/io5";
 import { FiPaperclip } from "react-icons/fi";
 import axios from "axios";
