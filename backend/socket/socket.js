@@ -9,6 +9,7 @@ const io = new Server(server, {
     cors:{
         origin:['https://silent-chat.netlify.app','http://localhost:3000', 'http://localhost:5173'],
         methods:['GET', 'POST'],
+        credentials: true
     },
 });
 
